@@ -1,0 +1,14 @@
+<h1>Notes#index</h1>
+<p>Find me in app/views/notes/index.html.erb</p>
+
+<% @notes.each do |n| %>
+
+  <li> <%= link_to n.title, n %></li>
+  <li> <%= link_to n.post, n %></li>
+  <li> <%= n.updated_at %></li>
+
+
+
+
+
+<% end %>

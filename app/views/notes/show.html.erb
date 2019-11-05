@@ -1,0 +1,11 @@
+<h1>Notes#show</h1>
+<p>Find me in app/views/notes/show.html.erb</p>
+
+
+
+    <li> Title: <%= @note.title %></li>
+    <li> Updated at: <%= @note.updated_at %></li>
+
+    <li> Post: <%= @note.post %></li>
+  <%= link_to "Edit", edit_note_path(@note) %>
+<%= link_to "Delete", note_path(@note), method: :delete, data: { confirm: "Are you sure?"} %>

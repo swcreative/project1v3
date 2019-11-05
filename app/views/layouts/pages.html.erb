@@ -11,17 +11,15 @@
 
   <body>
     <header>
-
+      <img src="" alt="Logo">
 
       <nav>
         <% if @current_user.present? %>
 
             <%= link_to "New Note", new_note_path %>
-            <%= link_to "Notes", notes_path %>
+            <%= link_to "Notes", note_path(:id) %>
+
             <%= link_to "Logout #{ @current_user.email }", login_path, :method => 'delete' %>
-        <% else %>
-          <%= link_to "Home", root_path %>
-          <%= link_to "Sign up", new_user_path %>
         <% end %>
       </nav>
 
