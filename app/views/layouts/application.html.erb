@@ -18,12 +18,27 @@
 
             <%= link_to "New Note", new_note_path %>
             <%= link_to "Notes", notes_path %>
+            <%= link_to "New Share", new_share_path %>
             <%= link_to "Logout #{ @current_user.email }", login_path, :method => 'delete' %>
         <% else %>
           <%= link_to "Home", root_path %>
           <%= link_to "Sign up", new_user_path %>
         <% end %>
       </nav>
+
+      <section>
+
+<!--
+  % if @current_user.present? %>
+
+        % @usof.each do |s| %>
+          %= link_to s[0],  share_listing_path(s[1], @current_user.id) %>
+        % end %>
+
+    % end %>
+-->
+
+      </section>
 
 
     <%= yield %>

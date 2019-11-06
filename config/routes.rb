@@ -19,6 +19,9 @@ Rails.application.routes.draw do
 
   resources :shares
 
+  get '/notes/filter/:sid' => 'notes#filter', as: 'share_listing'
+
+
   # login is not CRUD
   get '/login' => 'session#new'
   post '/login' => 'session#create'

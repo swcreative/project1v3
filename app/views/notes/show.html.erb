@@ -7,5 +7,20 @@
     <li> Updated at: <%= @note.updated_at %></li>
 
     <li> Post: <%= @note.post %></li>
+
+    <%= form_tag note_path, :method => "get" do %>
+      <%= hidden_field_tag :id, @note.id %>
+      <%= label_tag "Add a share:" %>
+      <%= text_field_tag :query %>
+      <%= submit_tag "Get share" %>
+    <% end %>
+
+
+  <% if @share.present? %>
+  <p><%= @share.code %></p>
+  <% end %>
+
+
+
   <%= link_to "Edit", edit_note_path(@note) %>
 <%= link_to "Delete", note_path(@note), method: :delete, data: { confirm: "Are you sure?"} %>

@@ -3,9 +3,10 @@
 
 <% @notes.each do |n| %>
 
-  <li> <%= link_to n.title, n %></li>
-  <li> <%= link_to n.post, n %></li>
-  <li> <%= n.updated_at %></li>
+  <li> <%= link_to n.title, n %>, <%= n.updated_at %></li>
+   <li> <%= link_to n.post, n %></li>
+  <li> <%= link_to n.share.try(:code), notes_path %></li> 
+  <!-- <li> %= n.updated_at %></li> -->
 
 
 

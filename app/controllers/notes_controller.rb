@@ -1,10 +1,26 @@
 class NotesController < ApplicationController
   def index
-    @notes = @current_user.notes.all.order('updated_at DESC')
+    if params[:share].blank?
+      @notes = @current_user.notes.all.order('updated_at DESC')
+    else
+      @share_id = Share.find_by(code: params[:share]).id
+      @notes = Note.where(share_id: @share_id).order('updated_at DESC')
+    end
+  end
+
+  def filter
+    # @note_share = Note.where(share_id: 60, user_id: 53)
+    @note_share = Note.where params[:sid]
   end
 
   def show
     @note = Note.find params[:id]
+
+    if params[:query].present?
+      share = params[:query].upcase
+      @share = Share.get_share share
+      @note << @share
+    end
   end
 
   def new
@@ -47,7 +63,7 @@ class NotesController < ApplicationController
 
   private
   def note_params
-    params.require(:note).permit(:title, :post, :user_id)
+    params.require(:note).permit(:title, :post, :user_id, :share_id)
   end
 
 end

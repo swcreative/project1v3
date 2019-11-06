@@ -1,4 +1,6 @@
 <%= form_for @note do |f| %>
+    <%= f.collection_select :share_id, Share.all, :id, :code, {include_blank: "Choose a share" } %>
+    
     <%= f.label :title %>
     <%= f.text_field :title %>
 
